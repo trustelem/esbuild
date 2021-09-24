@@ -6,9 +6,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/css_ast"
+	"github.com/trustelem/esbuild/internal/css_lexer"
 )
 
 // These names are shorter than their hex codes

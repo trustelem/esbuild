@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_printer"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/test"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_printer"
+	"github.com/trustelem/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/test"
 )
 
 func expectParseErrorJSON(t *testing.T, contents string, expected string) {

@@ -8,7 +8,7 @@
 //     import (
 //         "os"
 //
-//         "github.com/evanw/esbuild/pkg/cli"
+//         "github.com/trustelem/esbuild/pkg/cli"
 //     )
 //
 //     func main() {
@@ -18,7 +18,7 @@
 package cli
 
 import (
-	"github.com/evanw/esbuild/pkg/api"
+	"github.com/trustelem/esbuild/pkg/api"
 )
 
 // This function invokes the esbuild CLI. It takes an array of command-line

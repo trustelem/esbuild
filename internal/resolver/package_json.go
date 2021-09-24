@@ -8,11 +8,11 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_lexer"
+	"github.com/trustelem/esbuild/internal/js_parser"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 type packageJSON struct {

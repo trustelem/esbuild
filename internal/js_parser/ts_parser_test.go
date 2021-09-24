@@ -3,8 +3,8 @@ package js_parser
 import (
 	"testing"
 
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/config"
 )
 
 func expectParseErrorTS(t *testing.T, contents string, expected string) {

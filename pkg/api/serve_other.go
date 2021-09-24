@@ -15,10 +15,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/fs"
+	"github.com/trustelem/esbuild/internal/helpers"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 ////////////////////////////////////////////////////////////////////////////////

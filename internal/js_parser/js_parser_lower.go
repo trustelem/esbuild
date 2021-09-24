@@ -7,11 +7,11 @@ package js_parser
 import (
 	"fmt"
 
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_lexer"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 func (p *parser) prettyPrintTargetEnvironment(feature compat.JSFeature) (where string, notes []logger.MsgData) {

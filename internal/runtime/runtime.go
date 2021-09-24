@@ -6,8 +6,8 @@
 package runtime
 
 import (
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 // The runtime source is always at a special index. The index is always zero

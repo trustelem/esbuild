@@ -1,8 +1,8 @@
 package css_parser
 
 import (
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
+	"github.com/trustelem/esbuild/internal/css_ast"
+	"github.com/trustelem/esbuild/internal/css_lexer"
 )
 
 func (p *parser) parseSelectorList() (list []css_ast.ComplexSelector, ok bool) {

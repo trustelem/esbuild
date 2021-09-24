@@ -20,8 +20,8 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 type T uint

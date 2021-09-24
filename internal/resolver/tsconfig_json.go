@@ -4,14 +4,14 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/cache"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/cache"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/helpers"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_lexer"
+	"github.com/trustelem/esbuild/internal/js_parser"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 type TSConfigJSON struct {

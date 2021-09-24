@@ -3,7 +3,7 @@ package bundler
 import (
 	"testing"
 
-	"github.com/evanw/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/config"
 )
 
 var css_suite = suite{

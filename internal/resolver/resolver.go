@@ -9,15 +9,15 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/cache"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/helpers"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_lexer"
-	"github.com/evanw/esbuild/internal/js_printer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/ast"
+	"github.com/trustelem/esbuild/internal/cache"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/fs"
+	"github.com/trustelem/esbuild/internal/helpers"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_lexer"
+	"github.com/trustelem/esbuild/internal/js_printer"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 var defaultMainFields = map[config.Platform][]string{

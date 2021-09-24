@@ -8,13 +8,13 @@ package graph
 // things organized.
 
 import (
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/internal/resolver"
-	"github.com/evanw/esbuild/internal/sourcemap"
+	"github.com/trustelem/esbuild/internal/ast"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/css_ast"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/resolver"
+	"github.com/trustelem/esbuild/internal/sourcemap"
 )
 
 type InputFile struct {

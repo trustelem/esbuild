@@ -16,12 +16,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/evanw/esbuild/internal/cli_helpers"
-	"github.com/evanw/esbuild/internal/config"
-	"github.com/evanw/esbuild/internal/fs"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/pkg/api"
-	"github.com/evanw/esbuild/pkg/cli"
+	"github.com/trustelem/esbuild/internal/cli_helpers"
+	"github.com/trustelem/esbuild/internal/config"
+	"github.com/trustelem/esbuild/internal/fs"
+	"github.com/trustelem/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/pkg/api"
+	"github.com/trustelem/esbuild/pkg/cli"
 )
 
 type responseCallback = func(interface{})

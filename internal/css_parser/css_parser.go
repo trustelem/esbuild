@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/evanw/esbuild/internal/ast"
-	"github.com/evanw/esbuild/internal/compat"
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_lexer"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/ast"
+	"github.com/trustelem/esbuild/internal/compat"
+	"github.com/trustelem/esbuild/internal/css_ast"
+	"github.com/trustelem/esbuild/internal/css_lexer"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 // This is mostly a normal CSS parser with one exception: the addition of

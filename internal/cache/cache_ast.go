@@ -3,11 +3,11 @@ package cache
 import (
 	"sync"
 
-	"github.com/evanw/esbuild/internal/css_ast"
-	"github.com/evanw/esbuild/internal/css_parser"
-	"github.com/evanw/esbuild/internal/js_ast"
-	"github.com/evanw/esbuild/internal/js_parser"
-	"github.com/evanw/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/internal/css_ast"
+	"github.com/trustelem/esbuild/internal/css_parser"
+	"github.com/trustelem/esbuild/internal/js_ast"
+	"github.com/trustelem/esbuild/internal/js_parser"
+	"github.com/trustelem/esbuild/internal/logger"
 )
 
 // This cache intends to avoid unnecessarily re-parsing files in subsequent

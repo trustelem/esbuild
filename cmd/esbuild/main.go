@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/evanw/esbuild/internal/api_helpers"
-	"github.com/evanw/esbuild/internal/logger"
-	"github.com/evanw/esbuild/pkg/cli"
+	"github.com/trustelem/esbuild/internal/api_helpers"
+	"github.com/trustelem/esbuild/internal/logger"
+	"github.com/trustelem/esbuild/pkg/cli"
 )
 
 var helpText = func(colors logger.Colors) string {

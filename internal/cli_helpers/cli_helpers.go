@@ -6,7 +6,7 @@ package cli_helpers
 import (
 	"fmt"
 
-	"github.com/evanw/esbuild/pkg/api"
+	"github.com/trustelem/esbuild/pkg/api"
 )
 
 func ParseLoader(text string) (api.Loader, error) {

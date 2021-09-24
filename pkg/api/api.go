@@ -19,7 +19,7 @@
 //     import (
 //         "os"
 //
-//         "github.com/evanw/esbuild/pkg/api"
+//         "github.com/trustelem/esbuild/pkg/api"
 //     )
 //
 //     func main() {
@@ -51,7 +51,7 @@
 //         "fmt"
 //         "os"
 //
-//         "github.com/evanw/esbuild/pkg/api"
+//         "github.com/trustelem/esbuild/pkg/api"
 //     )
 //
 //     func main() {
@@ -77,7 +77,7 @@
 //
 package api
 
-import "github.com/evanw/esbuild/internal/fs"
+import "github.com/trustelem/esbuild/internal/fs"
 
 type SourceMap uint8
 
