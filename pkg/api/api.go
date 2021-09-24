@@ -77,6 +77,8 @@
 //
 package api
 
+import "github.com/evanw/esbuild/internal/fs"
+
 type SourceMap uint8
 
 const (
@@ -242,6 +244,8 @@ const (
 ////////////////////////////////////////////////////////////////////////////////
 // Build API
 
+type FsLike = fs.FsLike
+
 type BuildOptions struct {
 	Color    StderrColor
 	LogLimit int
@@ -302,6 +306,7 @@ type BuildOptions struct {
 	EntryPointsAdvanced []EntryPoint
 
 	Stdin          *StdinOptions
+	FS             FsLike
 	Write          bool
 	AllowOverwrite bool
 	Incremental    bool

@@ -709,13 +709,19 @@ func buildImpl(buildOpts BuildOptions) internalBuildResult {
 	}
 	log := logger.NewStderrLog(logOptions)
 
-	// Validate that the current working directory is an absolute path
-	realFS, err := fs.RealFS(fs.RealFSOptions{
-		AbsWorkingDir: buildOpts.AbsWorkingDir,
-	})
-	if err != nil {
-		log.AddError(nil, logger.Loc{}, err.Error())
-		return internalBuildResult{result: BuildResult{Errors: convertMessagesToPublic(logger.Error, log.Done())}}
+	var realFS fs.FS
+	if buildOpts.FS != nil {
+		realFS = fs.NewIntfFS(buildOpts.FS)
+	} else {
+		// Validate that the current working directory is an absolute path
+		var err error
+		realFS, err = fs.RealFS(fs.RealFSOptions{
+			AbsWorkingDir: buildOpts.AbsWorkingDir,
+		})
+		if err != nil {
+			log.AddError(nil, logger.Loc{}, err.Error())
+			return internalBuildResult{result: BuildResult{Errors: convertMessagesToPublic(logger.Error, log.Done())}}
+		}
 	}
 
 	// Do not re-evaluate plugins when rebuilding. Also make sure the working
@@ -799,15 +805,23 @@ func rebuildImpl(
 	log logger.Log,
 	isRebuild bool,
 ) internalBuildResult {
-	// Convert and validate the buildOpts
-	realFS, err := fs.RealFS(fs.RealFSOptions{
-		AbsWorkingDir: buildOpts.AbsWorkingDir,
-		WantWatchData: buildOpts.Watch != nil,
-	})
-	if err != nil {
-		// This should already have been checked above
-		panic(err.Error())
+
+	var realFS fs.FS
+	if buildOpts.FS != nil {
+		realFS = fs.NewIntfFS(buildOpts.FS)
+	} else {
+		// Convert and validate the buildOpts
+		var err error
+		realFS, err = fs.RealFS(fs.RealFSOptions{
+			AbsWorkingDir: buildOpts.AbsWorkingDir,
+			WantWatchData: buildOpts.Watch != nil,
+		})
+		if err != nil {
+			// This should already have been checked above
+			panic(err.Error())
+		}
 	}
+
 	isTargetUnconfigured, jsFeatures, cssFeatures, targetEnv := validateFeatures(log, buildOpts.Target, buildOpts.Engines)
 	outJS, outCSS := validateOutputExtensions(log, buildOpts.OutExtensions)
 	bannerJS, bannerCSS := validateBannerOrFooter(log, "banner", buildOpts.Banner)

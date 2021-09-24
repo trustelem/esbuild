@@ -594,6 +594,10 @@ outer:
 	return
 }
 
+func UnitTestParseOptions(osArgs []string) (*api.BuildOptions, *string, *api.TransformOptions, error) {
+	return parseOptionsForRun(osArgs)
+}
+
 // This returns either BuildOptions, TransformOptions, or an error
 func parseOptionsForRun(osArgs []string) (*api.BuildOptions, *string, *api.TransformOptions, error) {
 	// If there's an entry point or we're bundling, then we're building
@@ -720,7 +724,16 @@ func runImpl(osArgs []string) int {
 				logger.PrintErrorToStderr(osArgs, "Cannot use \"metafile\" without an output path")
 				return 1
 			}
-			realFS, realFSErr := fs.RealFS(fs.RealFSOptions{AbsWorkingDir: buildOptions.AbsWorkingDir})
+
+			var realFSErr error
+			var realFS fs.FS
+
+			if buildOptions.FS != nil {
+				realFS = fs.NewIntfFS(buildOptions.FS)
+			} else {
+				realFS, realFSErr = fs.RealFS(fs.RealFSOptions{AbsWorkingDir: buildOptions.AbsWorkingDir})
+			}
+
 			if realFSErr == nil {
 				absPath, ok := realFS.Abs(*metafile)
 				if !ok {
