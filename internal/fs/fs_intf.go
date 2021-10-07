@@ -3,7 +3,6 @@ package fs
 import (
 	"bytes"
 	"io"
-	"os"
 	"path/filepath"
 	"strings"
 )
@@ -118,8 +117,7 @@ func (f *IntfFS) Join(parts ...string) string {
 }
 
 func (f *IntfFS) Cwd() string {
-	wd, _ := os.Getwd()
-	return wd
+	return f.cwd
 }
 
 func (f *IntfFS) Rel(base string, target string) (string, bool) {
