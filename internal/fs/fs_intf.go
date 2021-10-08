@@ -2,7 +2,9 @@ package fs
 
 import (
 	"bytes"
+	"errors"
 	"io"
+	"io/fs"
 	"path/filepath"
 	"strings"
 )
@@ -22,6 +24,15 @@ func NewIntfFS(fs FsLike) *IntfFS {
 	}
 }
 
+func unwrapPathErr(err error) error {
+	var pathErr *fs.PathError
+	if errors.As(err, &pathErr) {
+		return pathErr.Err
+	}
+
+	return err
+}
+
 func (f *IntfFS) ReadDirectory(dir string) (entries DirEntries, canonicalError error, originalError error) {
 	if !f.IsAbs(dir) {
 		dir = f.Join(f.cwd, dir)
@@ -29,7 +40,8 @@ func (f *IntfFS) ReadDirectory(dir string) (entries DirEntries, canonicalError e
 
 	names, err := f.inner.Readdirnames(dir)
 	if err != nil {
-		return DirEntries{}, err, err
+		cerr := unwrapPathErr(err)
+		return DirEntries{}, cerr, err
 	}
 
 	entries.dir = dir
@@ -50,7 +62,8 @@ func (f *IntfFS) ReadFile(path string) (contents string, canonicalError error, o
 
 	rc, err := f.inner.Open(path)
 	if err != nil {
-		return "", err, err
+		cerr := unwrapPathErr(err)
+		return "", cerr, err
 	}
 
 	defer rc.Close()
