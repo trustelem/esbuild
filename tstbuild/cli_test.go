@@ -8,7 +8,7 @@ import (
 )
 
 func TestBuildNamedFile(t *testing.T) {
-	checkEnv(t)
+	skipTestIfEnvNotSet(t)
 
 	const output = "cli.js"
 	if _, err := os.Stat(output); err == nil {
@@ -22,7 +22,7 @@ func TestBuildNamedFile(t *testing.T) {
 }
 
 func TestBuildMinifiedNamedFile(t *testing.T) {
-	checkEnv(t)
+	skipTestIfEnvNotSet(t)
 
 	const output = "cli.min.js"
 	if _, err := os.Stat(output); err == nil {

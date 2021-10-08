@@ -247,72 +247,72 @@ const (
 type FsLike = fs.FsLike
 
 type BuildOptions struct {
-	Color    StderrColor
-	LogLimit int
-	LogLevel LogLevel
+	Color    StderrColor `json:",omitempty"`
+	LogLimit int         `json:",omitempty"`
+	LogLevel LogLevel    `json:",omitempty"`
 
-	Sourcemap      SourceMap
-	SourceRoot     string
-	SourcesContent SourcesContent
+	Sourcemap      SourceMap      `json:",omitempty"`
+	SourceRoot     string         `json:",omitempty"`
+	SourcesContent SourcesContent `json:",omitempty"`
 
-	Target  Target
-	Engines []Engine
+	Target  Target   `json:",omitempty"`
+	Engines []Engine `json:",omitempty"`
 
-	MinifyWhitespace  bool
-	MinifyIdentifiers bool
-	MinifySyntax      bool
-	Charset           Charset
-	TreeShaking       TreeShaking
-	IgnoreAnnotations bool
-	LegalComments     LegalComments
+	MinifyWhitespace  bool          `json:",omitempty"`
+	MinifyIdentifiers bool          `json:",omitempty"`
+	MinifySyntax      bool          `json:",omitempty"`
+	Charset           Charset       `json:",omitempty"`
+	TreeShaking       TreeShaking   `json:",omitempty"`
+	IgnoreAnnotations bool          `json:",omitempty"`
+	LegalComments     LegalComments `json:",omitempty"`
 
-	JSXMode     JSXMode
-	JSXFactory  string
-	JSXFragment string
+	JSXMode     JSXMode `json:",omitempty"`
+	JSXFactory  string  `json:",omitempty"`
+	JSXFragment string  `json:",omitempty"`
 
-	Define    map[string]string
-	Pure      []string
-	KeepNames bool
+	Define    map[string]string `json:",omitempty"`
+	Pure      []string          `json:",omitempty"`
+	KeepNames bool              `json:",omitempty"`
 
-	GlobalName        string
-	Bundle            bool
-	PreserveSymlinks  bool
-	Splitting         bool
-	Outfile           string
-	Metafile          bool
-	Outdir            string
-	Outbase           string
-	AbsWorkingDir     string
-	Platform          Platform
-	Format            Format
-	External          []string
-	MainFields        []string
-	Conditions        []string // For the "exports" field in "package.json"
-	Loader            map[string]Loader
-	ResolveExtensions []string
-	Tsconfig          string
-	OutExtensions     map[string]string
-	PublicPath        string
-	Inject            []string
-	Banner            map[string]string
-	Footer            map[string]string
-	NodePaths         []string // The "NODE_PATH" variable from Node.js
+	GlobalName        string            `json:",omitempty"`
+	Bundle            bool              `json:",omitempty"`
+	PreserveSymlinks  bool              `json:",omitempty"`
+	Splitting         bool              `json:",omitempty"`
+	Outfile           string            `json:",omitempty"`
+	Metafile          bool              `json:",omitempty"`
+	Outdir            string            `json:",omitempty"`
+	Outbase           string            `json:",omitempty"`
+	AbsWorkingDir     string            `json:",omitempty"`
+	Platform          Platform          `json:",omitempty"`
+	Format            Format            `json:",omitempty"`
+	External          []string          `json:",omitempty"`
+	MainFields        []string          `json:",omitempty"`
+	Conditions        []string          `json:",omitempty"` // For the "exports" field in "package.json"
+	Loader            map[string]Loader `json:",omitempty"`
+	ResolveExtensions []string          `json:",omitempty"`
+	Tsconfig          string            `json:",omitempty"`
+	OutExtensions     map[string]string `json:",omitempty"`
+	PublicPath        string            `json:",omitempty"`
+	Inject            []string          `json:",omitempty"`
+	Banner            map[string]string `json:",omitempty"`
+	Footer            map[string]string `json:",omitempty"`
+	NodePaths         []string          `json:",omitempty"` // The "NODE_PATH" variable from Node.js
 
-	EntryNames string
-	ChunkNames string
-	AssetNames string
+	EntryNames string `json:",omitempty"`
+	ChunkNames string `json:",omitempty"`
+	AssetNames string `json:",omitempty"`
 
-	EntryPoints         []string
-	EntryPointsAdvanced []EntryPoint
+	EntryPoints         []string     `json:",omitempty"`
+	EntryPointsAdvanced []EntryPoint `json:",omitempty"`
 
-	Stdin          *StdinOptions
-	FS             FsLike
-	Write          bool
-	AllowOverwrite bool
-	Incremental    bool
-	Plugins        []Plugin
+	Stdin          *StdinOptions `json:",omitempty"`
+	FS             FsLike        `json:",omitempty"`
+	Write          bool          `json:",omitempty"`
+	AllowOverwrite bool          `json:",omitempty"`
+	Incremental    bool          `json:",omitempty"`
+	Plugins        []Plugin      `json:",omitempty"`
 
-	Watch *WatchMode
+	Watch *WatchMode `json:",omitempty"`
 }
 
 type EntryPoint struct {
@@ -355,41 +355,41 @@ func Build(options BuildOptions) BuildResult {
 // Transform API
 
 type TransformOptions struct {
-	Color    StderrColor
-	LogLimit int
-	LogLevel LogLevel
+	Color    StderrColor `json:",omitempty"`
+	LogLimit int         `json:",omitempty"`
+	LogLevel LogLevel    `json:",omitempty"`
 
-	Sourcemap      SourceMap
-	SourceRoot     string
-	SourcesContent SourcesContent
+	Sourcemap      SourceMap      `json:",omitempty"`
+	SourceRoot     string         `json:",omitempty"`
+	SourcesContent SourcesContent `json:",omitempty"`
 
-	Target     Target
-	Format     Format
-	GlobalName string
-	Engines    []Engine
+	Target     Target   `json:",omitempty"`
+	Format     Format   `json:",omitempty"`
+	GlobalName string   `json:",omitempty"`
+	Engines    []Engine `json:",omitempty"`
 
-	MinifyWhitespace  bool
-	MinifyIdentifiers bool
-	MinifySyntax      bool
-	Charset           Charset
-	TreeShaking       TreeShaking
-	IgnoreAnnotations bool
-	LegalComments     LegalComments
+	MinifyWhitespace  bool          `json:",omitempty"`
+	MinifyIdentifiers bool          `json:",omitempty"`
+	MinifySyntax      bool          `json:",omitempty"`
+	Charset           Charset       `json:",omitempty"`
+	TreeShaking       TreeShaking   `json:",omitempty"`
+	IgnoreAnnotations bool          `json:",omitempty"`
+	LegalComments     LegalComments `json:",omitempty"`
 
-	JSXMode     JSXMode
-	JSXFactory  string
-	JSXFragment string
+	JSXMode     JSXMode `json:",omitempty"`
+	JSXFactory  string  `json:",omitempty"`
+	JSXFragment string  `json:",omitempty"`
 
-	TsconfigRaw string
-	Footer      string
-	Banner      string
+	TsconfigRaw string `json:",omitempty"`
+	Footer      string `json:",omitempty"`
+	Banner      string `json:",omitempty"`
 
-	Define    map[string]string
-	Pure      []string
-	KeepNames bool
+	Define    map[string]string `json:",omitempty"`
+	Pure      []string          `json:",omitempty"`
+	KeepNames bool              `json:",omitempty"`
 
-	Sourcefile string
-	Loader     Loader
+	Sourcefile string `json:",omitempty"`
+	Loader     Loader `json:",omitempty"`
 }
 
 type TransformResult struct {

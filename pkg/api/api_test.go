@@ -1,13 +1,10 @@
-package tstbuild
+package api
 
 import (
 	"encoding/json"
 	"fmt"
 	"os"
 	"testing"
-
-	"github.com/trustelem/esbuild/pkg/api"
-	"github.com/trustelem/esbuild/pkg/cli"
 )
 
 func skipTestIfEnvNotSet(t *testing.T) {
@@ -34,16 +31,37 @@ func toJson(v interface{}, indent bool) string {
 }
 
 func TestApiBuildNamedFile(t *testing.T) {
-	skipTestIfEnvNotSet(t)
+	//skipTestIfEnvNotSet(t)
+
+	{
+		cwd, err := os.Getwd()
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		err = os.Chdir("../../tstbuild")
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		defer os.Chdir(cwd)
+	}
 
 	const output = "api.js"
 	if _, err := os.Stat(output); err == nil {
 		os.Remove(output)
 	}
 
-	opts, _, _, _ := cli.UnitTestParseOptions([]string{"--bundle", "--outfile=" + output, "app.jsx"})
+	opts := &BuildOptions{
+		LogLimit:    10,
+		LogLevel:    3,
+		Bundle:      true,
+		Outfile:     output,
+		EntryPoints: []string{"app.jsx"},
+		Write:       true,
+	}
 
-	result := api.Build(*opts)
+	result := Build(*opts)
 	if len(result.Errors) > 0 {
 		t.Fatalf("build failed:\n%s", toJson(result.Errors, true))
 	}
@@ -57,11 +75,21 @@ func TestApiBuildMinifiedNamedFile(t *testing.T) {
 		os.Remove(output)
 	}
 
-	opts, _, _, _ := cli.UnitTestParseOptions([]string{"--bundle", "--minify", "--outfile=" + output, "app.jsx"})
+	opts := &BuildOptions{
+		LogLimit:          10,
+		LogLevel:          3,
+		MinifyWhitespace:  true,
+		MinifyIdentifiers: true,
+		MinifySyntax:      true,
+		Bundle:            true,
+		Outfile:           output,
+		EntryPoints:       []string{"app.jsx"},
+		Write:             true,
+	}
 
 	t.Logf("options: %s", toJson(opts, true))
 
-	result := api.Build(*opts)
+	result := Build(*opts)
 	if len(result.Errors) > 0 {
 		t.Fatalf("build failed:\n%s", toJson(result.Errors, true))
 	}

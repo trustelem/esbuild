@@ -856,21 +856,28 @@ func (r resolverQuery) parseTSConfig(file string, visited map[string]bool) (*TSC
 				if r.fs.Base(current) != "node_modules" {
 					join := r.fs.Join(current, "node_modules", extends)
 					filesToCheck := []string{r.fs.Join(join, "tsconfig.json"), join, join + ".json"}
+				filesLoop:
 					for _, fileToCheck := range filesToCheck {
 						base, err := r.parseTSConfig(fileToCheck, visited)
-						if err == nil {
-							return base
-						} else if err == syscall.ENOENT {
-							continue
-						} else if err == errParseErrorImportCycle {
-							r.log.AddRangeWarning(&tracker, extendsRange,
-								fmt.Sprintf("Base config file %q forms cycle", extends))
-						} else if err != errParseErrorAlreadyLogged {
-							r.log.AddRangeError(&tracker, extendsRange,
-								fmt.Sprintf("Cannot read file %q: %s",
-									r.PrettyPath(logger.Path{Text: fileToCheck, Namespace: "file"}), err.Error()))
+						if err != nil {
+							switch {
+							case err == syscall.ENOENT:
+								continue filesLoop
+
+							case err == errParseErrorImportCycle:
+								r.log.AddRangeWarning(&tracker, extendsRange,
+									fmt.Sprintf("Base config file %q forms cycle", extends))
+
+							case err != errParseErrorAlreadyLogged:
+								r.log.AddRangeError(&tracker, extendsRange,
+									fmt.Sprintf("Cannot read file %q: %s",
+										r.PrettyPath(logger.Path{Text: fileToCheck, Namespace: "file"}), err.Error()))
+							}
+
+							return nil
 						}
-						return nil
+
+						return base
 					}
 				}
 

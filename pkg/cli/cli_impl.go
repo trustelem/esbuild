@@ -510,6 +510,9 @@ func parseOptionsImpl(
 				transformOpts.LogLevel = logLevel
 			}
 
+		case arg == "--scanfiles":
+			//keep going
+
 		case strings.HasPrefix(arg, "'--"):
 			return fmt.Errorf("Unexpected single quote character before flag (use \\\" to escape double quotes): %s", arg), nil
 
@@ -640,6 +643,7 @@ func runImpl(osArgs []string) int {
 	analyzeVerbose := false
 	end := 0
 
+	scanfiles := false
 	for _, arg := range osArgs {
 		// Special-case running a server
 		if arg == "--serve" || strings.HasPrefix(arg, "--serve=") || strings.HasPrefix(arg, "--servedir=") {
@@ -660,6 +664,9 @@ func runImpl(osArgs []string) int {
 			analyze = true
 			analyzeVerbose = true
 			continue
+		}
+		if arg == "--scanfiles" {
+			scanfiles = true
 		}
 
 		osArgs[end] = arg
@@ -780,8 +787,23 @@ func runImpl(osArgs []string) int {
 			buildOptions.Metafile = true
 		}
 
+		var tracefs *TraceFs
+		if scanfiles {
+			tracefs, err = NewTraceFS()
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "ERROR: %s", err)
+				return 1
+			}
+
+			buildOptions.FS = tracefs
+		}
+
 		// Run the build
 		result := api.Build(*buildOptions)
+
+		if scanfiles {
+			fmt.Fprintf(os.Stderr, " ***** traceFS:\n%s", tracefs.ScanLog())
+		}
 
 		// Print the analysis after the build
 		if analyze {

@@ -11,7 +11,7 @@ import (
 )
 
 func TestApiZipFS(t *testing.T) {
-	checkEnv(t)
+	skipTestIfEnvNotSet(t)
 
 	cwd, _ := os.Getwd()
 	root := filepath.Join(cwd, "node_modules")
